@@ -28,6 +28,12 @@ steps:
     containerRegistryType: 'Azure Container Registry'
 
 
-- task: CmdLine@2
+- task: Bash@3
   inputs:
-    script: 'curl ''''https://hub.docker.com/v2/repositories/simplonasa/azure_voting_app/tags'''' | jq ''''."results"[0]["name"]''''[11:13]simplonasa/azure_voting_app'
+    targetType: 'inline'
+    script: 'sudo apt-get install jq'
+
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: 'curl ''''https://hub.docker.com/v2/repositories/simplonasa/azure_voting_app/tags'''' | jq ''."results"[0]["name"]'''
