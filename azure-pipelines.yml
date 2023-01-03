@@ -23,9 +23,9 @@ steps:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'kubernetes'
     command: 'get'
-    arguments: 'pods'
+    arguments: 'pod'
     secretType: 'dockerRegistry'
-    containerRegistryType: 'Container Registry'
+    containerRegistryType: 'Azure Container Registry'
 
 - task: Cache@2
   inputs:
