@@ -51,6 +51,5 @@ steps:
   inputs:
     connection: 'github.com_simplon-ThomasJulian'
     userRepository: 'simplon-ThomasJulian/Brief_7'
-    defaultVersionType: 'specificVersion'
-    version: '87785245'
+    defaultVersionType: 'latest'
     downloadPath: '/home/vsts/git'
