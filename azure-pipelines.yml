@@ -47,9 +47,24 @@ steps:
     path: '/home/vsts/version'
     cacheHitVar: 'cachette'
 
+- task: GitHubRelease@1
+  inputs:
+    gitHubConnection: 'github.com_simplon-ThomasJulian'
+    repositoryName: 'simplon-ThomasJulian/Brief_7'
+    action: 'create'
+    target: '$(Build.SourceVersion)'
+    tagSource: 'gitTag'
+    tagPattern: 'testest'
+    title: 'testest'
+    changeLogCompareToRelease: 'lastFullRelease'
+    changeLogType: 'commitBased'
+
+
+
 - task: DownloadGitHubRelease@0
   inputs:
     connection: 'github.com_simplon-ThomasJulian'
     userRepository: 'simplon-ThomasJulian/Brief_7'
     defaultVersionType: 'latest'
     downloadPath: '/home/vsts/git'
+
