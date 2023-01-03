@@ -23,7 +23,7 @@ steps:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'kubernetes'
     command: 'get'
-    arguments: 'pod'
+    arguments: 'deployments -o wide'
     secretType: 'dockerRegistry'
     containerRegistryType: 'Azure Container Registry'
 
@@ -32,7 +32,6 @@ steps:
     script: |
       cat /home/vsts/version/version.vote
       mkdir /home/vsts/version
-      kubectl get deployments -o wide
       pwd
       TESTVAR=$(curl 'https://hub.docker.com/v2/repositories/simplonasa/azure_voting_app/tags' | jq '."results"[0]["name"]')
       $NEWVERSION  = echo "$TESTVAR"|sed 's/^.//;s/.$//' > /home/vsts/ver/version
