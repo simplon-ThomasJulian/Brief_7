@@ -17,3 +17,14 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+
+- script: |
+    # Replace IMAGE_NAME with the name of your image
+    IMAGE_NAME=simplonasa/azurevotingapp
+    # Use curl to make a GET request to the Docker Hub API
+    DIGEST=$(curl -s https://registry.hub.docker.com/v2/${IMAGE_NAME}/manifests/latest | jq -r '.config.digest')
+    # Print the digest to the console
+    echo "Latest digest: $DIGEST"
+  displayName: 'Check latest digest'
+
+  
