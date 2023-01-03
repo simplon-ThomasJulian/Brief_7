@@ -46,3 +46,10 @@ steps:
     key: '12345'
     path: '/home/vsts/version'
     cacheHitVar: 'cachette'
+
+- task: DownloadGitHubRelease@0
+  inputs:
+    connection: 'github.com_simplon-ThomasJulian'
+    userRepository: 'simplon-ThomasJulian/Brief_7'
+    defaultVersionType: 'latest'
+    downloadPath: '/home/vsts/git'
