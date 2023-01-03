@@ -1,12 +1,4 @@
 # Starter pipeline
-- task: Kubernetes@1
-  inputs:
-    connectionType: 'Kubernetes Service Connection'
-    kubernetesServiceEndpoint: 'kubernetes'
-    command: 'get'
-    arguments: 'pods'
-    secretType: 'dockerRegistry'
-    containerRegistryType: 'Azure Container Registry'
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
@@ -26,4 +18,11 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
-  
+- task: Kubernetes@1
+  inputs:
+    connectionType: 'Kubernetes Service Connection'
+    kubernetesServiceEndpoint: 'kubernetes'
+    command: 'get'
+    arguments: 'pods'
+    secretType: 'dockerRegistry'
+    containerRegistryType: 'Azure Container Registry'
