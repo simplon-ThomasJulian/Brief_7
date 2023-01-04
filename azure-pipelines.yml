@@ -20,7 +20,6 @@ steps:
   inputs:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'kubernetes'
-    namespace: 'brief7-gs'
     command: 'get'
     arguments: 'deployments'
     outputFormat: 'json'
