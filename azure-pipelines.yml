@@ -125,7 +125,7 @@ steps:
       
         tags = response.json()["results"]
         
-        lastversion = print(tags[0]["name"])
+        lastversion = print(f"##vso[task.setvariable variable=MESSAGE;]tags[0]["name"])
       else:
       
         print("ça marche pas")
