@@ -37,13 +37,10 @@ steps:
       echo "##vso[task.setvariable variable=verold]$versionold"
       cd /home/vsts
       git clone https://github.com/simplon-ThomasJulian/Brief_7.git
-      cd Brief-7
-      ls
+      cd Brief-7/kube_brief6/
+      sed -i 's/{{ version }}/'$versionnew'/g' voteapp.yml
   name: 'bashoter'
 
-- bash: |
-    echo $(vernew)
-    echo $(verold)
 - task: Kubernetes@1
   condition: ne(variables['verold'],variables['vernew'])
   inputs:
