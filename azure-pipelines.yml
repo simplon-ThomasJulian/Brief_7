@@ -118,7 +118,7 @@ steps:
     scriptSource: 'inline'
     script: |
       import requests
-      
+      c=0
       response = requests.get("https://hub.docker.com/v2/repositories/simplonasa/azure_voting_app/tags")
       
       if response.status_code == 200:
@@ -129,10 +129,10 @@ steps:
       else:
       
         print("ça marche pas")
-      if lastversion == 'v1.0.0'
-        c == 'True'
-      else
-        c == 'False'
+      if lastversion == 'v1.0.0':
+        c = True
+      else:
+        c = False
       print(c)
 
 
