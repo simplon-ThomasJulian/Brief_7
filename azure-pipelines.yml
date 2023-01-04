@@ -21,123 +21,22 @@ steps:
 - task: Kubernetes@1
   inputs:
     connectionType: 'Kubernetes Service Connection'
-    kubernetesServiceEndpoint: 'kubernetes'
+    kubernetesServiceEndpoint: 'kuber-brief7-gs'
+    namespace: 'brief7-gs'
     command: 'get'
     arguments: 'deployments'
-    secretType: 'generic'
+    outputFormat: 'json'
+  name: "kube"
 
-- task: Kubernetes@1
-  name : Kubekube
+- task: CmdLine@2
   inputs:
-    connectionType: 'Kubernetes Service Connection'
-    kubernetesServiceEndpoint: 'kubernetes'
-    command: 'apply'
-    useConfigurationFile: true
-    configurationType: 'inline'
-    inline: |
-      apiVersion: apps/v1
-      kind: Deployment
-      metadata:
-        name: voteapp
-        labels:
-          app: voteapplb
-      spec:
-        selector:
-          matchLabels:
-            app: voteapplb
-        replicas: 1
-        template:
-          metadata:
-            labels:
-              app: voteapplb
-          spec:
-            containers:
-            - name: voteapp
-              image: simplonasa/azure_voting_app:v1.0.0
-              ports:
-              - containerPort: 80
-              resources:
-                requests:
-                  cpu: 250m
-                limits:
-                  cpu: 500m
-              env:
-              - name: TITLE
-                value: "La pêche c'est bien?"
-              - name: VOTE1VALUE
-                value: "Oui"
-              - name: VOTE2VALUE
-                value: "Non"
-              - name: STRESS_SECS
-                value: "3"
-      ---
-      apiVersion: v1
-      kind: Service
-      metadata:
-        name: loadvoteapp
-      spec:
-        type: ClusterIP
-        ports:
-        - port: 80
-        selector:
-          app: voteapplb
-    secretType: 'generic'
-
-- task: Kubernetes@1
-  inputs:
-    connectionType: 'Kubernetes Service Connection'
-    kubernetesServiceEndpoint: 'kubernetes'
-    command: 'apply'
-    useConfigurationFile: true
-    configurationType: 'inline'
-    inline: |
-      apiVersion: networking.k8s.io/v1
-      kind: Ingress
-      metadata:
-        name: ingress
-        annotations:
-          kubernetes.io/ingress.class: azure/application-gateway
-      spec:
-        tls:
-          - secretName: test-tls
-        rules:
-        - http:
-            paths:
-            - pathType: Prefix
-              path: /
-              backend:
-                service:
-                  name: loadvoteapp
-                  port:
-                    number: 80
-    secretType: 'generic'
-
-
-- task: PythonScript@0
-  inputs:
-    scriptSource: 'inline'
     script: |
-      import requests
-      c=0
-      response = requests.get("https://hub.docker.com/v2/repositories/simplonasa/azure_voting_app/tags")
-      
-      if response.status_code == 200:
-      
-        tags = response.json()["results"]
-        
-        lastversion = print(tags[0]["name"])
-        'print("##vso[task.setvariable variable=LASTVERSION;]{lastversion}'
-      else:
-      
-        print("ça marche pas")
-      if lastversion == 'v1.0.0':
-        c = True
-      else:
-        c = False
-      print(c)
-
-
-- task: PythonScript@0
+      VERSIONNEW=$(curl 'https://hub.docker.com/v2/repositories/simplonasa/azure_voting_app/tags' | jq '."results"[0]["name"]')
+      echo "$VERSIONNEW"|sed 's/^.//;s/.$//'
+      echo $VERSIONNEW
+      echo "##vso[task.setvariable variable=vernew;]$VERSIONNEW"
+- task: CmdLine@2
   inputs:
-    scriptSource: 'inline'
-    script: print($(LASTVERSION))
+    script: |
+      echo $(vernew)
+      echo $KUBE_KUBECTLOUTPUT | jq ."apiVersion"
