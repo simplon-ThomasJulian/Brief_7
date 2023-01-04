@@ -128,7 +128,7 @@ steps:
         lastversion = print(tags[0]["name"])
       else:
       
-        print("Failed to get tags for the repository")
+        print("ça marche pas")
       print(lastversion)
 
 
