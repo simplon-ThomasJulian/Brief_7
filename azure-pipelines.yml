@@ -22,8 +22,10 @@ steps:
   inputs:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'kubernetes'
-    command: 'get'
-    arguments: 'deployments -o wide'
+    command: 'apply'
+    useConfigurationFile: true
+    configuration: 'https://github.com/simplon-ThomasJulian/Brief_7'
+    arguments: '-f kubernetes/'
     secretType: 'dockerRegistry'
     containerRegistryType: 'Azure Container Registry'
 
