@@ -23,8 +23,9 @@ steps:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'kubernetes'
     command: 'apply'
+    arguments: 'f kubernetes/'
     useConfigurationFile: true
-    configuration: 'https://github.com/simplon-ThomasJulian/Brief_7/kubernetes'
+    configuration: 'https://github.com/simplon-ThomasJulian/Brief_7/'
     secretType: 'dockerRegistry'
     containerRegistryType: 'Azure Container Registry'
 
