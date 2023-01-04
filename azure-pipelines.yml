@@ -21,7 +21,7 @@ steps:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'kubernetes'
     command: 'get'
-    arguments: 'deployments -o=custom-columns=IMAGE:.spec.template.spec.containers[*].image --sort-by=.spec.template.spec.containers[*].image'
+    arguments: 'deployments'
   name: "kube"
 
 - task: CmdLine@2
@@ -36,4 +36,4 @@ steps:
   inputs:
     script: |
       echo $(vernew)
-      echo $KUBE_KUBECTLOUTPUT
+      echo $KUBE_KUBECTLOUTPUT | jq -r '.spec.template.spec.containers[0].image'
