@@ -125,7 +125,7 @@ steps:
       
         tags = response.json()["results"]
         
-        lastversion = print(f"##vso[task.setvariable variable=MESSAGE;]tags[0]["name"])
+        lastversion = print(tags[0]["name"])
       else:
       
         print("ça marche pas")
@@ -136,13 +136,14 @@ steps:
       print(c)
 
 
-- task: CmdLine@2
+- task: PythonScript@0
   inputs:
+    scriptSource: 'inline'
+    script: 'print("##vso[task.setvariable variable=MESSAGE;]Hello, world!")'
+
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
     script: |
-      cat /home/vsts/version/version.vote
-      mkdir /home/vsts/version
-      pwd
-      TESTVAR=$(curl 'https://hub.docker.com/v2/repositories/simplonasa/azure_voting_app/tags' | jq '."results"[0]["name"]')
-      $NEWVERSION  = echo "$TESTVAR"|sed 's/^.//;s/.$//' > /home/vsts/ver/version
-  name: 'TEST'
-- bash: echo $TEST.nameofthevariable
+      # Print the value of the variable
+      Write-Output $env:MESSAGE
