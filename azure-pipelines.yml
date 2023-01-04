@@ -125,11 +125,15 @@ steps:
       
         tags = response.json()["results"]
         
-        print(tags[0]["name"])
+        lastversion = print(tags[0]["name"])
       else:
       
         print("Failed to get tags for the repository")
 
+- task: PythonScript@0
+  inputs:
+    scriptSource: 'inline'
+    script: 'print(lastversion)'
 
 - task: CmdLine@2
   inputs:
