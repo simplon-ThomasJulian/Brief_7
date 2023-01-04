@@ -23,7 +23,7 @@ steps:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'kubernetes'
     command: 'apply'
-    arguments: 'f kubernetes/'
+    arguments: '-f kubernetes/'
     useConfigurationFile: true
     configuration: 'https://github.com/simplon-ThomasJulian/Brief_7/'
     secretType: 'dockerRegistry'
