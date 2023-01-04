@@ -37,4 +37,4 @@ steps:
   inputs:
     script: |
       echo $(vernew)
-      echo $KUBE_KUBECTLOUTPUT | jq ."apiVersion"
+      echo $KUBE_KUBECTLOUTPUT | jq ."image"
