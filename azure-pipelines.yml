@@ -129,11 +129,8 @@ steps:
       else:
       
         print("Failed to get tags for the repository")
+      print(lastversion)
 
-- task: PythonScript@0
-  inputs:
-    scriptSource: 'inline'
-    script: 'print(lastversion)'
 
 - task: CmdLine@2
   inputs:
