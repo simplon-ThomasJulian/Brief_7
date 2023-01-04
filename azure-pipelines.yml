@@ -22,12 +22,9 @@ steps:
   inputs:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'kubernetes'
-    command: 'apply'
-    useConfigurationFile: true
-    configuration: 'http://github.com/simplon-ThomasJulian/Brief_7/tree/main/kubernetes/app_deploy.yml'
-    arguments: '-f'
-    secretType: 'dockerRegistry'
-    containerRegistryType: 'Azure Container Registry'
+    command: 'get'
+    arguments: 'pod'
+    secretType: 'generic'
 - task: CmdLine@2
   inputs:
     script: |
