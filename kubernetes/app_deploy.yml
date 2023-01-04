@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: voteapplb
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -26,7 +26,12 @@ spec:
             cpu: 500m
         env:
         - name: STRESS_SECS
-          value: "3"
+          value: "2"
+        - name: REDIS_PWD
+          valueFrom:
+            secretKeyRef:
+              name: redispw
+              key: password
 ---
 apiVersion: v1
 kind: Service
