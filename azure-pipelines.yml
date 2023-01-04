@@ -83,6 +83,36 @@ steps:
           app: voteapplb
     secretType: 'generic'
 
+- task: Kubernetes@1
+  inputs:
+    connectionType: 'Kubernetes Service Connection'
+    kubernetesServiceEndpoint: 'kubernetes'
+    command: 'apply'
+    useConfigurationFile: true
+    configurationType: 'inline'
+    inline: |
+      apiVersion: networking.k8s.io/v1
+      kind: Ingress
+      metadata:
+        name: ingress
+        annotations:
+          kubernetes.io/ingress.class: azure/application-gateway
+      spec:
+        tls:
+          - secretName: test-tls
+        rules:
+        - http:
+            paths:
+            - pathType: Prefix
+              path: /
+              backend:
+                service:
+                  name: loadvoteapp
+                  port:
+                    number: 80
+    secretType: 'generic'
+
+
 - task: Bash@3
   inputs:
     targetType: 'inline'
