@@ -1,3 +1,4 @@
+
 # Starter pipeline
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
@@ -8,7 +9,7 @@ trigger:
 
 schedules:
 - cron: "0 * * * *"
-  displayName: Daily midnight build
+  displayName: repetition
   branches:
     include:
     - main
@@ -31,13 +32,11 @@ steps:
     script: |
       versionnew=$((curl 'https://hub.docker.com/v2/repositories/simplonasa/azure_voting_app/tags' | jq '."results"[0]["name"]')| sed 's/^.//;s/.$//')
       versionold=$(echo $KUBE_KUBECTLOUTPUT | jq '.items[].spec.template.spec.containers[].image' | cut -d: -f2 | sed 's/"//')
-      echo $versionnew
-      echo $versionold
       echo "##vso[task.setvariable variable=vernew]$versionnew"
       echo "##vso[task.setvariable variable=verold]$versionold"
       cd /home/vsts
       git clone https://github.com/simplon-ThomasJulian/Brief_7.git
-      cd Brief_7/kubernetes/
+      cd Brief-7/kubernetes/
       sed -i 's/{{ version }}/'$versionnew'/g' app_deploy.yml
   name: 'bashoter'
 
