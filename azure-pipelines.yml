@@ -24,10 +24,10 @@ steps:
     kubernetesServiceEndpoint: 'kubernetes'
     command: 'apply'
     useConfigurationFile: true
-    configuration: 'https://github.com/simplon-ThomasJulian/Brief_7/kubernetes/app_deploy.yml'
+    configuration: 'https://github.com/simplon-ThomasJulian/Brief_7/tree/main/kubernetes/app_deploy.yml'
+    arguments: '-f'
     secretType: 'dockerRegistry'
     containerRegistryType: 'Azure Container Registry'
-
 - task: CmdLine@2
   inputs:
     script: |
