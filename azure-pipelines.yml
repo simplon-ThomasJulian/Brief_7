@@ -113,10 +113,22 @@ steps:
     secretType: 'generic'
 
 
-- task: Bash@3
+- task: PythonScript@0
   inputs:
-    targetType: 'inline'
-    script: 'echo $(Kubekube.KubectlOutput.content)'
+    scriptSource: 'inline'
+    script: |
+      import requests
+      
+      response = requests.get("https://hub.docker.com/v2/repositories/simplonasa/azure_voting_app/tags")
+      
+      if response.status_code == 200:
+      
+        tags = response.json()["results"]
+        
+        print(tags[0]["name"])
+      else:
+      
+        print("Failed to get tags for the repository")
 
 
 - task: CmdLine@2
@@ -128,4 +140,4 @@ steps:
       TESTVAR=$(curl 'https://hub.docker.com/v2/repositories/simplonasa/azure_voting_app/tags' | jq '."results"[0]["name"]')
       $NEWVERSION  = echo "$TESTVAR"|sed 's/^.//;s/.$//' > /home/vsts/ver/version
   name: 'TEST'
-- bash: echo $(TEST.nameofthevariable)
+- bash: echo $TEST.nameofthevariable
