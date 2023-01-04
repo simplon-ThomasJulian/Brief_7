@@ -53,4 +53,4 @@ steps:
   inputs:
     script: |
       echo $(vernew)
-      echo $KUBE_KUBECTLOUTPUT | jq '.items[].spec.template.spec.containers[].image'
+      echo $KUBE_KUBECTLOUTPUT | jq '.items[].spec.template.spec.containers[].image' |cut -d: -f2|sed 's/"//'
