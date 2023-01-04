@@ -19,7 +19,7 @@ steps:
 - task: Kubernetes@1
   inputs:
     connectionType: 'Kubernetes Service Connection'
-    kubernetesServiceEndpoint: 'kuber-brief7-gs'
+    kubernetesServiceEndpoint: 'kubernetes'
     namespace: 'brief7-gs'
     command: 'get'
     arguments: 'deployments'
