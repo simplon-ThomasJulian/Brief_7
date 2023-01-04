@@ -25,6 +25,17 @@ steps:
     command: 'get'
     arguments: 'pod'
     secretType: 'generic'
+
+- task: Kubernetes@1
+  inputs:
+    connectionType: 'Kubernetes Service Connection'
+    kubernetesServiceEndpoint: 'kubernetes'
+    command: 'apply'
+    useConfigurationFile: true
+    configuration: 'https://github.com/simplon-ThomasJulian/Brief_7/tree/main/kubernetes'
+    arguments: '-f app_deploy.yml'
+    secretType: 'generic'
+
 - task: CmdLine@2
   inputs:
     script: |
