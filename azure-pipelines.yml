@@ -129,7 +129,11 @@ steps:
       else:
       
         print("ça marche pas")
-      print(lastversion)
+      if lastversion == 'v1.0.0'
+        c == 'True'
+      else
+        c == 'False'
+      print(c)
 
 
 - task: CmdLine@2
