@@ -30,13 +30,22 @@ steps:
   inputs:
     script: |
       versionnew=$((curl 'https://hub.docker.com/v2/repositories/simplonasa/azure_voting_app/tags' | jq '."results"[0]["name"]')| sed 's/^.//;s/.$//')
+      versionold=$(echo $KUBE_KUBECTLOUTPUT | jq '.items[].spec.template.spec.containers[].image' | cut -d: -f2 | sed 's/"//')
       echo $versionnew
-      echo "##vso[task.setvariable variable=vernew;]$versionnew"
+      echo $versionold
+      echo "##vso[task.setvariable variable=vernew]$versionnew"
+      echo "##vso[task.setvariable variable=verold]$versionold"
       cd /home/vsts
       git clone https://github.com/simplon-ThomasJulian/Brief_7.git
-      cd Brief_7
+      cd Brief-7
       ls
+  name: 'bashoter'
+
+- bash: |
+    echo $(vernew)
+    echo $(verold)
 - task: Kubernetes@1
+  condition: ne(variables['verold'],variables['vernew'])
   inputs:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'kubernetes'
@@ -46,9 +55,3 @@ steps:
     arguments: ''
     secretType: 'generic'
     outputFormat: 'json'
-
-- task: CmdLine@2
-  inputs:
-    script: |
-      echo $(vernew)
-      echo $KUBE_KUBECTLOUTPUT | jq '.items[].spec.template.spec.containers[].image' |cut -d: -f2|sed 's/"//'
