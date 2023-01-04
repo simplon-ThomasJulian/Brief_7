@@ -27,6 +27,7 @@ steps:
     secretType: 'generic'
 
 - task: Kubernetes@1
+  name : Kubekube
   inputs:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'kubernetes'
@@ -81,6 +82,12 @@ steps:
         selector:
           app: voteapplb
     secretType: 'generic'
+
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: 'echo $(Kubekube.KubectlOutput)'
+
 
 - task: CmdLine@2
   inputs:
