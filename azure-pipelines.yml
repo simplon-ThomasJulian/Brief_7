@@ -21,8 +21,7 @@ steps:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'kubernetes'
     command: 'get'
-    arguments: 'deployments'
-    outputFormat: 'json'
+    arguments: 'deployments -o=custom-columns=IMAGE:.spec.template.spec.containers[*].image --sort-by=.spec.template.spec.containers[*].image'
   name: "kube"
 
 - task: CmdLine@2
