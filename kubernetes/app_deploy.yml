@@ -25,12 +25,6 @@ spec:
           limits:
             cpu: 500m
         env:
-        - name: TITLE
-          value: "La pêche c'est bien?"
-        - name: VOTE1VALUE
-          value: "Oui"
-        - name: VOTE2VALUE
-          value: "Non"
         - name: STRESS_SECS
           value: "3"
 ---
