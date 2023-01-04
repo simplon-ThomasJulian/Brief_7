@@ -126,6 +126,7 @@ steps:
         tags = response.json()["results"]
         
         lastversion = print(tags[0]["name"])
+        'print("##vso[task.setvariable variable=LastVersion;]lastversion'
       else:
       
         print("ça marche pas")
@@ -146,4 +147,4 @@ steps:
     targetType: 'inline'
     script: |
       # Print the value of the variable
-      Write-Output $env:MESSAGE
+      Write-Output $env:LastVersion
