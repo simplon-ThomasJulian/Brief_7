@@ -26,11 +26,6 @@ steps:
     outputFormat: 'json'
   name: "kube"
 
-- task : CmdLine@2
-  inputs:
-    script: 
-      echo $KUBE_KUBECTLOUTPUT
-
 - task: CmdLine@2
   inputs:
     script: |
