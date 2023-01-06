@@ -7,4 +7,4 @@ Brief 7 - Continuous Delivery
 
 ## Création d'une Azure Pipeline avec un trigger cron pour checker les versions sur docker hub toutes les heures
 
-## Le pipeline redéploie le cluster mis à jour seulement si une nouvelle version est dispo grace à la condition<>
+## Le pipeline redéploie le cluster mis à jour seulement si une nouvelle version est dispo grace à la condition
