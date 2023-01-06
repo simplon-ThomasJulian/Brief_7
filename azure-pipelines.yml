@@ -38,7 +38,6 @@ steps:
       git clone https://github.com/simplon-ThomasJulian/Brief_7.git
       cd Brief_7/kubernetes/
       sed -i 's/{{ version }}/'$versionnew'/g' app_deploy.yml
-  name: 'bashoter'
 
 - task: Kubernetes@1
   condition: ne(variables['verold'],variables['vernew'])
