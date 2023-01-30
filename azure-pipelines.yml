@@ -21,10 +21,11 @@ steps:
 - task: Kubernetes@1
   inputs:
     connectionType: 'Kubernetes Service Connection'
-    kubernetesServiceEndpoint: 'kubernetes'
+    kubernetesServiceEndpoint: 'kubkub'
     command: 'get'
     arguments: 'deployments'
-    outputFormat: 'json'
+    secretType: 'dockerRegistry'
+    containerRegistryType: 'Azure Container Registry'
   name: "kube"
 
 - task: CmdLine@2
@@ -43,10 +44,8 @@ steps:
   condition: ne(variables['verold'],variables['vernew'])
   inputs:
     connectionType: 'Kubernetes Service Connection'
-    kubernetesServiceEndpoint: 'kubernetes'
+    kubernetesServiceEndpoint: 'kubkub'
     command: 'apply'
     useConfigurationFile: true
     configuration: '/home/vsts/Brief_7/kubernetes/'
-    arguments: ''
     secretType: 'generic'
-    outputFormat: 'json'
