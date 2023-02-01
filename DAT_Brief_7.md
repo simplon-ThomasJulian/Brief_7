@@ -5,8 +5,9 @@ architechture
 
 
 Objectifs
+On utilise Kubernetes et Azure pour fournir une application de vote, une base de données Redis et un stockage persistant pour la base de données. L'application de vote doit être disponible via une zone DNS grace à une application gateway.
 
-utiliser kubernetes et azure pour déployer une application de vote, une base de donnée redis, un stockage persistant pour la base de donnée. l'application de vote doit être disponible via notre zone DNS en passant par une application gateway connecter à kubernetes avec un ingress.
+
 listes des éléments déployé avec kubernetes
 
     Secrets
