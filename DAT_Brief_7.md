@@ -1,6 +1,9 @@
 DAT Brief 6
 architechture
 
+![dat_brief7](https://user-images.githubusercontent.com/107990221/216079986-b6bca996-8cbf-44c6-85e0-0a12657a84ff.png)
+
+
 Objectifs
 
 utiliser kubernetes et azure pour déployer une application de vote, une base de donnée redis, un stockage persistant pour la abse de donnée. l'application de vote doit être disponible via notre zone DNS en passant par une application gateway connecter à kubernetes avec un ingress.
