@@ -6,7 +6,7 @@ architechture
 
 Objectifs
 
-utiliser kubernetes et azure pour déployer une application de vote, une base de donnée redis, un stockage persistant pour la abse de donnée. l'application de vote doit être disponible via notre zone DNS en passant par une application gateway connecter à kubernetes avec un ingress.
+utiliser kubernetes et azure pour déployer une application de vote, une base de donnée redis, un stockage persistant pour la base de donnée. l'application de vote doit être disponible via notre zone DNS en passant par une application gateway connecter à kubernetes avec un ingress.
 listes des éléments déployé avec kubernetes
 
     Secrets
@@ -66,7 +66,7 @@ PipeLine
 
     utilisation de Azure Pipeline - simplicité d'utilisation, - gratuit, - doit être utilisé en entreprise
 
-Cost forcast
+Cost forecast
 
     1 AKS...........................Pay as you go: €69.46
         1 nodepool
