@@ -69,7 +69,7 @@ PipeLine
 
     utilisation de Azure Pipeline - simplicité d'utilisation, - gratuit, - doit être utilisé en entreprise
 
-Cost forecast
+Cost forecast monthly
 
     1 AKS...........................Pay as you go: €69.46
         1 nodepool
