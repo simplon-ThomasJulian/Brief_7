@@ -1,5 +1,6 @@
-DAT Brief 7
-architechture
+DAT Brief 7 architecture
+
+
 ![dat_brief7_gabriel](https://user-images.githubusercontent.com/107990221/216087491-05870a28-aaf5-4695-a4e9-b0aa24c74fac.png)
 
 ![dat_brief7](https://user-images.githubusercontent.com/107990221/216079986-b6bca996-8cbf-44c6-85e0-0a12657a84ff.png)
