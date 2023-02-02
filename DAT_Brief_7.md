@@ -67,7 +67,7 @@ https://votingappkube.simplon-thomas.space/
 
 PipeLine
 
-    utilisation de Azure Pipeline - simplicité d'utilisation, - gratuit, - doit être utilisé en entreprise
+    Choix d'Azure Pipeline car intégré à l'environment Azure, gratuit et simple d'utilisation.
 
 Cost forecast monthly
 
