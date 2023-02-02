@@ -68,6 +68,7 @@ https://votingappkube.simplon-thomas.space/
 PipeLine
 
     Choix d'Azure Pipeline car intégré à l'environment Azure, gratuit et simple d'utilisation.
+    Choix d'un trigger basé sur une crontbale de run toutes les heures à minute 0
 
 Cost forecast monthly
 
