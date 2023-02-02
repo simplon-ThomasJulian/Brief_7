@@ -13,6 +13,11 @@ On utilise Azure DevOps pour construire et déployer le Pipeline
 
 ---
 
+## Principe de la Pipeline
+Checker la version de l'application et la rédéployer automatiquement avec la dernière mise à jour
+
+---
+
 ## Point d'entrée
 
 On doit créer des points de connexions:  
