@@ -72,7 +72,7 @@ PipeLine
 
 Cost forecast monthly
 
-    1 AKS...........................Pay as you go: €69.46
+    1 AKS...........................Pay as you go: €133,60
         1 nodepool
             2 node: Standard B2s
         1 SSD premium: 32 Gb
