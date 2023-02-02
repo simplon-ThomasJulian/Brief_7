@@ -76,9 +76,10 @@ Cost forecast monthly
         1 nodepool
             2 node: Standard B2s
         1 SSD premium: 32 Gb
+        1 Cluster sous SLA uptime
     blob storage.....................Pay as you go:€0.08
         blob storage: 1Go
         10 000 writing operation
         10 000 read operation
 
-Total €69.53
+Total €134 en pay-as-you-go
