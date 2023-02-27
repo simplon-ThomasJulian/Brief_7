@@ -12,7 +12,7 @@ schedules:
   branches:
     include:
     - main
-  always: true
+  always: "true"
 
 pool:
   vmImage: ubuntu-latest
@@ -31,7 +31,7 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      versionnew=$((curl 'https://hub.docker.com/v2/repositories/simplonasa/azure_voting_app/tags' | jq '."results"[0]["name"]')| sed 's/^.//;s/.$//')
+      versionnew=$(curl 'https://hub.docker.com/v2/repositories/simplonasa/azure_voting_app/tags' | jq -r '."results"[0]["name"]')
       versionold=$(echo $KUBE_KUBECTLOUTPUT | jq '.items[1].spec.template.spec.containers[].image' | cut -d: -f2 | sed 's/"//')
       echo "##vso[task.setvariable variable=vernew]$versionnew"
       echo "##vso[task.setvariable variable=verold]$versionold"
